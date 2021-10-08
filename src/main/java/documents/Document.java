@@ -10,7 +10,6 @@ import java.nio.file.Paths;
 
 @Data
 public class Document{
-
 	public String title;
 	public Path file;
 	public String content;
@@ -43,12 +42,14 @@ public class Document{
 		return success;
 	}
 
-	public void saveDocument(){
+	public boolean saveDocument(){
 		boolean success = false;
 		try{
 			Files.write(Paths.get(this.file.toRealPath().toString()), this.content.getBytes(StandardCharsets.UTF_8));
+			success = true;
 		}catch(IOException ex){
 			ex.printStackTrace();
 		}
+		return success;
 	}
 }
