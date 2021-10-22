@@ -1,14 +1,13 @@
+import com.formdev.flatlaf.FlatDarkLaf;
 import documents.Document;
 import view.IDEFrame;
 
+import java.util.Arrays;
+
 public class Main {
 	public static void main (String[] args){
-		Document document = new Document("src\\main\\resources\\files\\file.java");
-		document.readDocument();
+		FlatDarkLaf.setup();
 		IDEFrame frame = new IDEFrame();
 		frame.setVisible(true);
-		document.setContent(document.getContent() + "hola caracola");
-		document.saveDocument();
-		System.out.println(document.content);
 	}
 }

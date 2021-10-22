@@ -2,6 +2,7 @@ package documents;
 
 import lombok.*;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -19,7 +20,7 @@ public class Document{
 		this.title = this.file.getFileName().toString();
 	}
 
-	public void initFile(String path) {
+	private void initFile(String path) {
 		if (Files.exists(Paths.get(path))) {
 			this.file = Paths.get(path);
 		}else{
@@ -45,7 +46,7 @@ public class Document{
 	public boolean saveDocument(){
 		boolean success = false;
 		try{
-			Files.write(Paths.get(this.file.toRealPath().toString()), this.content.getBytes(StandardCharsets.UTF_8));
+			Files.write(this.file, this.content.getBytes(StandardCharsets.UTF_8));
 			success = true;
 		}catch(IOException ex){
 			ex.printStackTrace();
